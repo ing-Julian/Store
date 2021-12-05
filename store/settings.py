@@ -74,6 +74,8 @@ REST_FRAMEWORK = {
     ) 
 }
 
+AUTH_USER_MODEL = 'appStore.User'
+
 ROOT_URLCONF = 'store.urls'
 
 TEMPLATES = [
