@@ -28,10 +28,10 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     id = models.BigAutoField(primary_key=True)
-    username = models.CharField('Username', max_length = 15, unique=True) 
-    password = models.CharField('Password', max_length = 256)
-    name = models.CharField('Name', max_length = 30)
-    email = models.EmailField('Email', max_length = 100)
+    username = models.CharField('username', max_length = 15, unique=True) 
+    password = models.CharField('password', max_length = 256)
+    name = models.CharField('name', max_length = 30)
+    email = models.EmailField('email', max_length = 100)
 
     def save(self, **kwargs):
         some_salt = 'mMUj0DrIK6vgtdIYepkIxN'
@@ -40,3 +40,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager() 
     USERNAME_FIELD = 'username'
+
+    def __str__(self):
+            return f'{self.username} {self.email} {self.name}'
